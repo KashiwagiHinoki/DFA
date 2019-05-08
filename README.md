@@ -19,5 +19,5 @@
   - 数列が与えられた時に, それがnの倍数であるかを評価するDFA
   - state_num (= n)
 
-##ライセンス
+## ライセンス
 This software is released under the MIT License, see LICENSE.txt.
