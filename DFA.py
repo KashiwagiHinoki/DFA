@@ -27,7 +27,10 @@ class DFA:
             _l = '+'.join([t[1] for t, q_j in self.transitions.items() if t[0] == self.states[i] and q_j == self.states[j]])
             return self.toRegexRecursion(i, i, k) * _Regex("("+_l+")")* self.toRegexRecursion(j, j, k)
         
-        return self.toRegexRecursion(i, j, k - 1) + self.toRegexRecursion(i, k, k - 1) * self.toRegexRecursion(k, k, k - 1).rep() * self.toRegexRecursion(k, j, k - 1)
+        ret = self.toRegexRecursion(i, j, k - 1) + self.toRegexRecursion(i, k, k - 1) * self.toRegexRecursion(k, k, k - 1).rep() * self.toRegexRecursion(k, j, k - 1)
+        if i == j: 
+            return ret.rep()
+        return ret
 
     def toRegex(self):
         _regs = [self.toRegexRecursion(self.init_state_index, ac_index, len(self.states) - 1) for ac_index  in self.accepting_states_index]

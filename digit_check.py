@@ -3,7 +3,7 @@ from _regex import _Regex
 from _regex import empty_set
 
 
-state_num = 20
+state_num = 4
 states = list([str(i) for i in range(state_num)])
 alp = list([str(i) for i in range(10)])
 init_state = str(0)
@@ -22,3 +22,4 @@ dfa = DFA(states, alp, init_state, transitions, accepting_states)
 
 #print(dfa.is_accept(input_string))
 print(dfa.toRegex())
+
